@@ -53,13 +53,10 @@ try {
     
     # Create Databases
     New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName $XD7Site -DataStore Site -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Site -DatabaseCredentials $Database_CredObject 
-    #New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName CloudSite -DataStore Site -DatabaseServer "localhost\SQLExpress" -DatabaseName "CloudSiteSite" -DatabaseCredentials $Database_CredObject 
     New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName $XD7Site -DataStore Logging -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Logging -DatabaseCredentials $Database_CredObject 
-    #New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName CloudSite -DataStore Logging -DatabaseServer "localhost\SQLExpress" -DatabaseName "CloudSiteLogging" -DatabaseCredentials $Database_CredObject
     New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName $XD7Site -DataStore Monitor -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Monitor -DatabaseCredentials $Database_CredObject 
-    #New-XDDatabase -AdminAddress $env:COMPUTERNAME -SiteName CloudSite -DataStore Monitor -DatabaseServer "localhost\SQLExpress" -DatabaseName "CloudSiteMonitoring" -DatabaseCredentials $Database_CredObject
-
-
+    
+    
     # Create Site
 
     New-XDSite -DatabaseServer $DatabaseServer -LoggingDatabaseName $DatabaseName_Logging -MonitorDatabaseName $DatabaseName_Monitor -SiteDatabaseName $DatabaseName_Site -SiteName $XD7Site -AdminAddress $env:COMPUTERNAME 
