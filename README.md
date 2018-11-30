@@ -21,4 +21,4 @@ After the base VM is created and domain joined, it will then copy the ISO file t
 
 As of 11/29/18 my template is a Windows 2016 Server and I've only deployed one full VM with all the Citrix roles installed (Controller, StoreFront, SQL Express, and Director).
 
-I have not tried to install the VDA or other components at 
+I have not tried to install the VDA or other components at the same time, even though I've made the script to be able to do it. Try and let me know.
