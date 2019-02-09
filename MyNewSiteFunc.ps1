@@ -44,7 +44,7 @@ try {
 
     $userPassword = ConvertTo-SecureString -String $DatabasePassword -AsPlainText -Force
     
-    $Database_CredObject = New-Object System.Management.Automation.PSCredential("ctxlab\Administrator",$userPassword)
+    $Database_CredObject = New-Object System.Management.Automation.PSCredential("$DomainName\$AdministratorName",$userPassword)
     
 
     #New-XDDatabase -AllDefaultDatabases -DatabaseServer $DatabaseServer -SiteName $SiteName  

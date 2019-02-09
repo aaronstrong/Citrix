@@ -22,9 +22,11 @@ if ( !(Get-Module -Name VMware.VimAutomation.Core -ErrorAction SilentlyContinue)
     Exit 99
 }
 
+    Write-host "Reboot $hostname..."
 
+    Restart-VMGuest $hostname
 
-    write-host “Waiting for VM Tools to stop” -ForegroundColor Blue
+    write-host “Waiting for VM Tools to stop” -ForegroundColor yellow
     do {
     $toolsStatus = (Get-VM $hostname | Get-View).Guest.ToolsStatus
     write-host $toolsStatus
@@ -32,10 +34,9 @@ if ( !(Get-Module -Name VMware.VimAutomation.Core -ErrorAction SilentlyContinue)
     } until ( $toolsStatus -ne ‘toolsOk’ )
 
     # ---- Wait for computer to come back ---#
-    write-host “Waiting for VM to Start” -ForegroundColor Blue
+    write-host “Waiting for VM to Start” -ForegroundColor yellow
     do {
     $vmCheck = get-view -ViewType VirtualMachine -property Name,Guest -Filter @{"name"="$hostname"}
     write-host $vmCheck.Guest.GuestOperationsReady
     sleep $timeToWait
     } until ( $vmCheck.Guest.GuestOperationsReady -eq ‘False’ )
-

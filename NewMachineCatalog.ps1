@@ -57,6 +57,6 @@ Param (
     [string]$minimumFunctionalLevel
 )
 Add-PSSnapin -Name Citrix.*
-Import-Module Citrix.XenDesktop.Admin-
+#Import-Module Citrix.XenDesktop.Admin-
 
 New-BrokerCatalog  -Name $name -Description $description -AllocationType $allocationType -ProvisioningType $provisionType -PersistUserChanges $persistUserChanges -SessionSupport $sessionSupport -MachinesArePhysical $true #-MinimumFunctionalLevel $minimumFunctionalLevel
